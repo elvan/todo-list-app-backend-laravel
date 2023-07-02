@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\V1\CompleteTaskController;
 use App\Http\Controllers\Api\V1\TaskController;
@@ -24,6 +25,7 @@ Route::prefix('v1')->group(function () {
 
 Route::prefix('auth')->group(function () {
     Route::post('/register', RegisterController::class);
+    Route::post('/login', LoginController::class);
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
