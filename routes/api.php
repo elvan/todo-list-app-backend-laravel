@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('v1')->group(function () {
+Route::middleware('auth:sanctum')->prefix('v1')->group(function () {
     Route::apiResource('/tasks', TaskController::class);
     Route::patch('/tasks/{task}/complete', CompleteTaskController::class);
 });
@@ -27,7 +27,7 @@ Route::prefix('v1')->group(function () {
 Route::prefix('auth')->group(function () {
     Route::post('/register', RegisterController::class);
     Route::post('/login', LoginController::class);
-    Route::post('/logout', LogoutController::class);
+    Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
