@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\Tasks;
+namespace App\Http\Controllers\Api\V2;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTaskRequest;
@@ -17,6 +17,7 @@ class TaskController extends Controller
     {
         /** @var \App\Models\User */
         $user = auth()->user();
+
         return TaskResource::collection($user->tasks()->get());
     }
 
